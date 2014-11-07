@@ -23,6 +23,8 @@ var makeChart = function(root, lookFor, back) {
                               .attr("width", diameter)
                               .attr("height", diameter)
                               .attr("class", "bubble")
+                              .style("display", "block")
+                              .style("margin", "auto")
                               .append("g")
                                 .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom));
 

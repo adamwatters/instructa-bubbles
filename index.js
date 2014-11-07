@@ -9,7 +9,7 @@ var app = express();
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'));
 
-var categories = getCategoriesObject.getCategoriesObject()
+var categories = getCategoriesObject.getCategoriesObject();
 
 var options = {
 	host: "devru-instructables.p.mashape.com",

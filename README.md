@@ -1,7 +1,6 @@
 # InstructaBubbles
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
-[Instructables.com](http://instructables.com/). content in an interactive nested bubble chart. 
+[Instructables.com](http://instructables.com/) content in an interactive nested bubble chart. 
 
 This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
 

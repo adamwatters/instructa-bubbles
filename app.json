@@ -1,7 +1,7 @@
 {
   "name": "InstructaBubbles",
   "description": "Instructables.com content in an interactive nested bubble chart",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "repository": "https://github.com/adamwatters/instructa-bubbles",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["node", "express", "d3", "mongoDB", "Instructables"]
 }

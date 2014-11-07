@@ -13,7 +13,7 @@ var categories = getCategoriesObject.getCategoriesObject()
 
 var options = {
 	host: "devru-instructables.p.mashape.com",
-	path: "/list?limit=100&offset=0&sort=recent&type=id",
+	path: "/list?limit=500&offset=0&sort=recent&type=id",
 	method: "GET",
 	headers: {
         "X-Mashape-Key" : process.env.MASHKEY

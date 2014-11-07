@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.2",
-  "description": "A sample Node.js app using Express 4",
+  "name": "InstructaBubbles",
+  "version": "0.0.1",
+  "description": "Instructables.com content in an interactive nested bubble chart",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -14,12 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/adamwatters/instructa-bubbles"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
+  "keywords": ["node", "express", "d3", "mongoDB", "Instructables", "Mashape"],
   "license": "MIT"
 }

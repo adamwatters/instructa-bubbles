@@ -1,0 +1,8 @@
+.node {
+	opacity: .9;
+}
+
+.node:hover {
+	stroke-width: 6;
+	opacity: 1;
+}

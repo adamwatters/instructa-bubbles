@@ -1,12 +1,12 @@
 var makeChart = function(root, lookFor, back) {
 
 	var diameter = 700;
-		color = d3.scale.category20c();
+	var color = d3.scale.category10();
 
 	var bubble = d3.layout.pack()
     .sort(null)
     .size([diameter, diameter])
-    .padding(1.5)
+    .padding(5)
     .children(function(d) {
       return d[lookFor];
     })
@@ -19,35 +19,29 @@ var makeChart = function(root, lookFor, back) {
   }
 
   var svg = d3.select("body").append("svg")
-                              .attr("background-color", "blue")
-                              .attr("width", diameter)
+                              .on("dblclick", function(){
+                                makeChart({cats: back}, "cats", back);
+                              })
+                              .attr("width", "100%")
                               .attr("height", diameter)
                               .attr("class", "bubble")
                               .style("display", "block")
                               .style("margin", "auto")
                               .append("g")
-                                .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom));
-
-  svg.append("rect")
-  .on("click", function(){
-    makeChart({cats: back}, "cats", back);
-  })
-  .attr("class", "background")
-  .attr("x", 0)
-  .attr("y", 0)
-  .attr("width", diameter)
-  .attr("height", diameter)
+                                .call(d3.behavior.zoom().scaleExtent([1, 20]).scale(1).on("zoom", zoom))
+                              .append("g");
 
  	var node = svg.selectAll(".node")
                 .data(bubble.nodes(root).filter(function(d) { 
                                                     return !d.children; 
                 }))
                 .enter().append("g")
-                .on("click", function(d){
+                .on("dblclick", function(d){
+                  d3.event.stopPropagation();
                   while(d3.select(this)[0][0].nextSibling !== null){
                     d3.select(this)[0][0].nextSibling.remove();
                   }
-                  while(d3.select(this)[0][0].previousSibling.previousSibling !== null){
+                  while(d3.select(this)[0][0].previousSibling !== null){
                     d3.select(this)[0][0].previousSibling.remove();
                   }
                   //d3.select(this)[0][0].nextSibling.nextSibling.nextSibling.remove();        
@@ -60,15 +54,22 @@ var makeChart = function(root, lookFor, back) {
                   window.setTimeout(function(){makeChart(d, d.nextLevel, back)}, 500);
                 })
                 .attr("class", "node")
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+                .attr("transform", function(d) { return "translate(" + d.x  + "," + d.y  + ")"; });
 
   node.append("circle")
+      .attr("cursor","pointer")
       .attr("r", function(d) { return d.r; })
-      .attr("fill", function(d){return color(d.r)});
+      .attr("fill", function(d){
+        return color(d.r);
+      })
+      .attr("stroke", function(d){
+        return color(d.r);
+      });
 
   var textCheck;
 
   node.append("text")
+      .attr("cursor","pointer")
       .attr("dy", ".3em")
       .attr("font-weight", "bold")
       .attr("font-family", "helvetica")
@@ -82,9 +83,9 @@ var makeChart = function(root, lookFor, back) {
 
   if (!lookFor) {
 
-    node.attr("onclick", function(d){
-      console.log(d);
-      return "location.href='http://www.instructables.com" + d.url + "'";
+    node.on("dblclick", function(d){
+      var url = "http://www.instructables.com" + d.url
+      window.open(url);
     });
 
     d3.select("text").transition()
@@ -114,9 +115,7 @@ var makeChart = function(root, lookFor, back) {
         })
   }
 
-
-function zoom() {
+  function zoom() {
   svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-};
-
+  };
 };

@@ -23,13 +23,14 @@ var makeChart = function(root, lookFor, back) {
                                 makeChart({cats: back}, "cats", back);
                               })
                               .attr("width", "100%")
-                              .attr("height", diameter)
+                              .attr("height", diameter + 400)
                               .attr("class", "bubble")
                               .style("display", "block")
                               .style("margin", "auto")
                               .append("g")
-                                .call(d3.behavior.zoom().scaleExtent([1, 20]).scale(1).on("zoom", zoom))
-                              .append("g");
+                                .call(d3.behavior.zoom().translate([300,20]).scaleExtent([.8, 20]).scale(.8).on("zoom", zoom))
+                              .append("g")
+                              .attr("transform", "translate(300,20) scale(.8)")
 
  	var node = svg.selectAll(".node")
                 .data(bubble.nodes(root).filter(function(d) { 

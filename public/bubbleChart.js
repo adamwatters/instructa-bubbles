@@ -1,6 +1,6 @@
 var makeChart = function(root, lookFor, back) {
 
-	var diameter = 700;
+	var diameter = 600;
 	var color = d3.scale.category10();
 
 	var bubble = d3.layout.pack()
@@ -18,19 +18,18 @@ var makeChart = function(root, lookFor, back) {
     d3.select("svg").remove();
   }
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select(".bubble-wrapper").append("svg")
+                              .attr("class", "bubble")
                               .on("dblclick", function(){
-                                makeChart({cats: back}, "cats", back);
+                                makeChart({categories: back}, "categories", back);
                               })
-                              .attr("width", "100%")
-                              .attr("height", diameter + 400)
                               .attr("class", "bubble")
                               .style("display", "block")
                               .style("margin", "auto")
                               .append("g")
-                                .call(d3.behavior.zoom().translate([300,20]).scaleExtent([.8, 20]).scale(.8).on("zoom", zoom))
+                                .call(d3.behavior.zoom().translate([200,50]).scaleExtent([.8, 20]).scale(.8).on("zoom", zoom))
                               .append("g")
-                              .attr("transform", "translate(300,20) scale(.8)")
+                              .attr("transform", "translate(200,50) scale(.8)")
 
  	var node = svg.selectAll(".node")
                 .data(bubble.nodes(root).filter(function(d) { 
@@ -44,10 +43,8 @@ var makeChart = function(root, lookFor, back) {
                   }
                   while(d3.select(this)[0][0].previousSibling !== null){
                     d3.select(this)[0][0].previousSibling.remove();
-                  }
-                  //d3.select(this)[0][0].nextSibling.nextSibling.nextSibling.remove();        
+                  }        
                   d3.select(this)
-                  .attr("class", "target")
                   .transition()
                   .attr("transform", function (d){
                     return "translate(" + diameter/2 +"," + diameter/2 + ")scale(" + (diameter/2) / d.r + ")";
@@ -58,7 +55,6 @@ var makeChart = function(root, lookFor, back) {
                 .attr("transform", function(d) { return "translate(" + d.x  + "," + d.y  + ")"; });
 
   node.append("circle")
-      .attr("cursor","pointer")
       .attr("r", function(d) { return d.r; })
       .attr("fill", function(d){
         return color(d.r);
@@ -70,6 +66,7 @@ var makeChart = function(root, lookFor, back) {
   var textCheck;
 
   node.append("text")
+      .attr("class", "noselect")
       .attr("cursor","pointer")
       .attr("dy", ".3em")
       .attr("font-weight", "bold")
@@ -90,7 +87,8 @@ var makeChart = function(root, lookFor, back) {
     });
 
     d3.select("text").transition()
-                    .attr("dy", "-100")
+                    .attr("dy", "-100");
+
     node.append("image")
         .attr('x', function(d){
           return 0 - d.r / 2;
@@ -117,6 +115,6 @@ var makeChart = function(root, lookFor, back) {
   }
 
   function zoom() {
-  svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
   };
 };

@@ -12,7 +12,7 @@
 	  		alert(error, errorTwo);
 	  	},
 	  	complete: function(){
-	  		makeChart({cats: instructables}, "cats", instructables);
+	  		makeChart({categories: instructables}, "categories", instructables);
 	  	}
 	});
 })();

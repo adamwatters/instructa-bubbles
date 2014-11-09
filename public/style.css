@@ -17,6 +17,11 @@
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 15px;
 }
+
+.credit {
+	font-size: 13px;
+}
+
 body {
     -webkit-touch-callout: none;
     -webkit-user-select: none;

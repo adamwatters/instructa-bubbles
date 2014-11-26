@@ -1,8 +1,44 @@
 <html>
 <head>
-	<title>Instructa-Bubbles</title>
+	<title>InstructaBubbles</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
- 	<p>instructabubbles</p>
+	<div class="head-bar">
+		<span class="app-name">
+			<h1>instructaBUBBLES</h1>
+		</span>
+	</div>
+	<div class="container">
+		<div class="bubble-wrapper"></div>
+		<div class="instructions">
+			<div class="instructions-text">
+				<h3>What is this?</h3>
+				<p>A navigable bubble chart of 500 recent instructables from <a href="http://www.instructables.com/">Instructables.com</a>. Bubbles are sized by number of views.</p>
+				<h3>How do I navigate this so called "navigable bubble chart"?</h3>
+				<ul>
+					<li>double click on a bubble to open it</li>
+					<br>
+					<li>double click outside of a bubble to return to the Categories level</li>
+					<br>
+					<li>when you reach a single InstructaBubble, double click to open the Instructable in a new tab</li>
+					<br>
+					<li>two-finger swipe to zoom in/out (with cursor over a bubble)</li>
+					<br>
+					<li>click-and-drag to pan (ditto last paren)</li>
+				</ul>
+				<br>
+				<br>
+				<br>
+				<span class="credit">
+					<p>made with love by <a href="http://www.instructables.com/member/adamwatters/">Adam Watters<a> <br> source code on <a href="https://github.com/adamwatters/instructa-bubbles">Github<a></p>
+				</span>
+			</div>
+		</div>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="d3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="bubbleChart.js"></script>
 </body>
 </html>

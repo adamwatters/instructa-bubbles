@@ -27,9 +27,9 @@ var makeChart = function(root, lookFor, back) {
                               .style("display", "block")
                               .style("margin", "auto")
                               .append("g")
-                                .call(d3.behavior.zoom().translate([100,50]).scaleExtent([.8, 20]).scale(.8).on("zoom", zoom))
+                                .call(d3.behavior.zoom().translate([200,50]).scaleExtent([.8, 20]).scale(.8).on("zoom", zoom))
                               .append("g")
-                              .attr("transform", "translate(100,50) scale(.8)")
+                              .attr("transform", "translate(200,50) scale(.8)")
 
     var node = svg.selectAll(".node")
                 .data(bubble.nodes(root).filter(function(d) { 
